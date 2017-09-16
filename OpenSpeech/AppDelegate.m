@@ -8,6 +8,12 @@
 
 #import "AppDelegate.h"
 
+#ifdef DEBUG
+    const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+#else
+    const DDLogLevel ddLogLevel = DDLogLevelOff;
+#endif
+
 @interface AppDelegate ()
 
 @end

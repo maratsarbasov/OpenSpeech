@@ -1,0 +1,21 @@
+//
+//  OpenSpeech-Prefix.pch
+//  OpenSpeech
+//
+//  Created by Fedor Solovev on 16/09/2017.
+//  Copyright © 2017 Top ProGear. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+@import UIKit;
+@import Foundation;
+
+#import <CocoaLumberjack/CocoaLumberjack.h>
+extern const DDLogLevel ddLogLevel;
+
+#import "CustomBlocks.h"
+
+#import "NetworkManager.h"
+
+#endif

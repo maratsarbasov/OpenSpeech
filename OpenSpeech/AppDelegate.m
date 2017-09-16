@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <YandexSpeechKit/SpeechKit.h>
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[YSKSpeechKit sharedInstance] configureWithAPIKey:@"733f0c69-a190-4845-b8dc-8ba729b3db53"];
+    
     return YES;
 }
 

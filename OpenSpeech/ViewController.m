@@ -35,6 +35,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NetworkManager sharedInstance] requestRatesForCurrencyType:CurrencyTypeEUR
+                                                    onCompletion:^(NSArray * _Nullable data, NSError * _Nullable error)
+    {
+        
+    }];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

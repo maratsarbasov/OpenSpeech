@@ -12,7 +12,7 @@
 
 - (instancetype)mapObjectFieldsFromRemoteDictionary:(NSDictionary *)remoteDictionary
 {
-    // Redefenition
+    // redefine in subclasses
     return self;
 }
 

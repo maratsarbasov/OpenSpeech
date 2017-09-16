@@ -30,6 +30,8 @@
     return uniqueInstance;
 }
 
+#pragma mark - Methods
+
 - (void)requestCardsOnCompletion:(ArrayResponseBlock)completionBlock
 {
     [self GETRequest:@"MyCards/1.0.0/MyCardsInfo/cardlist"
@@ -61,6 +63,21 @@
          call_completion_block(completionBlock, cardObjects, error);
      }];
 }
+
+- (void)requestRatesForCurrencyTypeFrom:(CurrencyType)currencyTypeFrom
+                      forCurrencyTypeTo:(CurrencyType)currencyTypeTo
+                           onCompletion:(ArrayResponseBlock)completionBlock
+{
+    [self GETRequest:@"getrates/1.0.0/rates/cash"
+              params:nil
+            progress:nil
+        onCompletion:^(id  _Nullable data, NSError * _Nullable error)
+    {
+        
+    }];
+}
+
+#pragma mark - Base
 
 - (void)POSTRequest:(NSString *)path
              params:(NSDictionary *)params

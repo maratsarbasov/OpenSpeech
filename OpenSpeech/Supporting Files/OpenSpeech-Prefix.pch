@@ -15,7 +15,11 @@
 extern const DDLogLevel ddLogLevel;
 
 #import "CustomBlocks.h"
+#import "BasicDefines.h"
 
 #import "NetworkManager.h"
+
+#import "AbstractObject.h"
+#import "CardObject.h"
 
 #endif

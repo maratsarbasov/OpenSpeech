@@ -14,6 +14,9 @@
 		4E0783A11F6D1F6600813126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0783A01F6D1F6600813126 /* Assets.xcassets */; };
 		4E0783A41F6D1F6600813126 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0783A21F6D1F6600813126 /* LaunchScreen.storyboard */; };
 		9F961BF01F6D27E2004839E3 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BEF1F6D27E2004839E3 /* NetworkManager.m */; };
+		9F961BF91F6D3AE7004839E3 /* CardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BF81F6D3AE7004839E3 /* CardObject.m */; };
+		9F961BFD1F6D4BA6004839E3 /* AbstractObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BFC1F6D4BA6004839E3 /* AbstractObject.m */; };
+		9FE48DB61F6D50AB0037A3AC /* MappingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE48DB51F6D50AB0037A3AC /* MappingHelper.m */; };
 		F17A32B56042125D99FB4560 /* libPods-OpenSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5BF7D7943548FB3575F565 /* libPods-OpenSpeech.a */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,13 @@
 		9F961BEF1F6D27E2004839E3 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		9F961BF31F6D2957004839E3 /* CustomBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomBlocks.h; path = "Supporting Files/CustomBlocks.h"; sourceTree = "<group>"; };
 		9F961BF51F6D2DE8004839E3 /* OpenSpeech-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OpenSpeech-Prefix.pch"; path = "Supporting Files/OpenSpeech-Prefix.pch"; sourceTree = "<group>"; };
+		9F961BF71F6D3AE7004839E3 /* CardObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardObject.h; path = Model/CardObject.h; sourceTree = "<group>"; };
+		9F961BF81F6D3AE7004839E3 /* CardObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardObject.m; path = Model/CardObject.m; sourceTree = "<group>"; };
+		9F961BFB1F6D4BA6004839E3 /* AbstractObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractObject.h; path = Model/AbstractObject.h; sourceTree = "<group>"; };
+		9F961BFC1F6D4BA6004839E3 /* AbstractObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractObject.m; path = Model/AbstractObject.m; sourceTree = "<group>"; };
+		9FE48DB21F6D4EE80037A3AC /* BasicDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDefines.h; sourceTree = "<group>"; };
+		9FE48DB41F6D50AB0037A3AC /* MappingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MappingHelper.h; path = Helpers/MappingHelper.h; sourceTree = "<group>"; };
+		9FE48DB51F6D50AB0037A3AC /* MappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MappingHelper.m; path = Helpers/MappingHelper.m; sourceTree = "<group>"; };
 		A9CA4941EA47F2C01ED52F2F /* Pods-OpenSpeech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSpeech.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OpenSpeech/Pods-OpenSpeech.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +96,8 @@
 				4E0783A01F6D1F6600813126 /* Assets.xcassets */,
 				4E0783A21F6D1F6600813126 /* LaunchScreen.storyboard */,
 				4E0783A51F6D1F6600813126 /* Info.plist */,
+				9F961BF61F6D3AB2004839E3 /* Models */,
+				9FE48DB31F6D50870037A3AC /* Helpers */,
 				4E0783941F6D1F6600813126 /* Supporting Files */,
 				9F961BEE1F6D27E2004839E3 /* NetworkManager.h */,
 				9F961BEF1F6D27E2004839E3 /* NetworkManager.m */,
@@ -97,10 +109,31 @@
 			isa = PBXGroup;
 			children = (
 				9F961BF51F6D2DE8004839E3 /* OpenSpeech-Prefix.pch */,
+				9FE48DB21F6D4EE80037A3AC /* BasicDefines.h */,
 				9F961BF31F6D2957004839E3 /* CustomBlocks.h */,
 				4E0783951F6D1F6600813126 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9F961BF61F6D3AB2004839E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9F961BFB1F6D4BA6004839E3 /* AbstractObject.h */,
+				9F961BFC1F6D4BA6004839E3 /* AbstractObject.m */,
+				9F961BF71F6D3AE7004839E3 /* CardObject.h */,
+				9F961BF81F6D3AE7004839E3 /* CardObject.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9FE48DB31F6D50870037A3AC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9FE48DB41F6D50AB0037A3AC /* MappingHelper.h */,
+				9FE48DB51F6D50AB0037A3AC /* MappingHelper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		AEA1FEC2FCD072CD80D46629 /* Pods */ = {
@@ -241,7 +274,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F961BF01F6D27E2004839E3 /* NetworkManager.m in Sources */,
+				9F961BF91F6D3AE7004839E3 /* CardObject.m in Sources */,
+				9F961BFD1F6D4BA6004839E3 /* AbstractObject.m in Sources */,
 				4E07839C1F6D1F6600813126 /* ViewController.m in Sources */,
+				9FE48DB61F6D50AB0037A3AC /* MappingHelper.m in Sources */,
 				4E0783991F6D1F6600813126 /* AppDelegate.m in Sources */,
 				4E0783961F6D1F6600813126 /* main.m in Sources */,
 			);

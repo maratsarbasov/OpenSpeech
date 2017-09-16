@@ -35,10 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[NetworkManager sharedInstance] requestCardsOnCompletion:^(id  _Nullable data, NSError * _Nullable error) {
-        
-    }];
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)startListening:(id)sender

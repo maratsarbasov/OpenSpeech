@@ -8,8 +8,8 @@
 
 #import "ActionObjects.h"
 
-#define RUB_WORDS @[@"рублей", @"рубль", @"рубля"]
-#define USD_WORDS @[@"доллар", @"доллара", @"долларов", @"доллары"]
+#define RUB_WORDS @[@"рублей", @"рубль", @"рубля", @"р", @"рубли", @"рублях"]
+#define USD_WORDS @[@"доллар", @"доллара", @"долларов", @"доллары", @"долларах"]
 #define EUR_WORDS @[@"евро"]
 
 @implementation ExchangeRatesAction

@@ -27,6 +27,7 @@
     // Override point for customization after application launch.
     
     [[YSKSpeechKit sharedInstance] configureWithAPIKey:@"733f0c69-a190-4845-b8dc-8ba729b3db53"];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     return YES;
 }

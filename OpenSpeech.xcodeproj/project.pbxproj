@@ -13,6 +13,7 @@
 		4E07839F1F6D1F6600813126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E07839D1F6D1F6600813126 /* Main.storyboard */; };
 		4E0783A11F6D1F6600813126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0783A01F6D1F6600813126 /* Assets.xcassets */; };
 		4E0783A41F6D1F6600813126 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0783A21F6D1F6600813126 /* LaunchScreen.storyboard */; };
+		4E993DDF1F6D55AD0077F449 /* ActionDecider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E993DDE1F6D55AD0077F449 /* ActionDecider.m */; };
 		9F961BF01F6D27E2004839E3 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BEF1F6D27E2004839E3 /* NetworkManager.m */; };
 		F17A32B56042125D99FB4560 /* libPods-OpenSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5BF7D7943548FB3575F565 /* libPods-OpenSpeech.a */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,8 @@
 		4E0783A01F6D1F6600813126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E0783A31F6D1F6600813126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E0783A51F6D1F6600813126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E993DDD1F6D55AD0077F449 /* ActionDecider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDecider.h; sourceTree = "<group>"; };
+		4E993DDE1F6D55AD0077F449 /* ActionDecider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionDecider.m; sourceTree = "<group>"; };
 		529F3097757AF04A9F63EF1F /* Pods-OpenSpeech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSpeech.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenSpeech/Pods-OpenSpeech.release.xcconfig"; sourceTree = "<group>"; };
 		9F961BEE1F6D27E2004839E3 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		9F961BEF1F6D27E2004839E3 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 				4E0783981F6D1F6600813126 /* AppDelegate.m */,
 				4E07839A1F6D1F6600813126 /* ViewController.h */,
 				4E07839B1F6D1F6600813126 /* ViewController.m */,
+				4E993DDD1F6D55AD0077F449 /* ActionDecider.h */,
+				4E993DDE1F6D55AD0077F449 /* ActionDecider.m */,
 				4E07839D1F6D1F6600813126 /* Main.storyboard */,
 				4E0783A01F6D1F6600813126 /* Assets.xcassets */,
 				4E0783A21F6D1F6600813126 /* LaunchScreen.storyboard */,
@@ -244,6 +249,7 @@
 				4E07839C1F6D1F6600813126 /* ViewController.m in Sources */,
 				4E0783991F6D1F6600813126 /* AppDelegate.m in Sources */,
 				4E0783961F6D1F6600813126 /* main.m in Sources */,
+				4E993DDF1F6D55AD0077F449 /* ActionDecider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

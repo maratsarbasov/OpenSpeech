@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YandexSpeechKit/YSKRecognizerDelegate.h>
 
-@interface ViewController : UIViewController
 
+@interface ViewController : UIViewController <YSKRecognizerDelegate>
 
 @end
 

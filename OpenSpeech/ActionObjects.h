@@ -12,7 +12,9 @@
 typedef NS_ENUM(NSInteger, CurrencyType) {
     CurrencyTypeUSD = 0,
     CurrencyTypeRUB,
-    CurrencyTypeEUR
+    CurrencyTypeEUR,
+    CurrencyTypeGBP,
+    CurrencyTypeCHF
 };
 
 

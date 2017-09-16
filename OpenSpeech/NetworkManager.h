@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)requestRatesForCurrencyTypeFrom:(CurrencyType)currencyTypeFrom
                       forCurrencyTypeTo:(CurrencyType)currencyTypeTo
-                           onCompletion:(nullable ArrayResponseBlock)completionBlock;
+                           onCompletion:(nullable NumberResponseBlock)completionBlock;
 
 @end
 

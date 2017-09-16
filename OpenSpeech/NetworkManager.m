@@ -66,14 +66,60 @@
 
 - (void)requestRatesForCurrencyTypeFrom:(CurrencyType)currencyTypeFrom
                       forCurrencyTypeTo:(CurrencyType)currencyTypeTo
-                           onCompletion:(ArrayResponseBlock)completionBlock
+                           onCompletion:(NumberResponseBlock)completionBlock
 {
     [self GETRequest:@"getrates/1.0.0/rates/cash"
               params:nil
             progress:nil
         onCompletion:^(id  _Nullable data, NSError * _Nullable error)
     {
-        
+        NSNumber *value = nil;
+        if (error == nil) {
+            NSArray *rates = data[@"rates"];
+            if (rates != nil) {
+                NSMutableArray<NSDictionary *> *needRates = [[NSMutableArray alloc] initWithCapacity:2];
+                
+                for (NSDictionary *rate in rates) {
+                    NSString *currencyCode = [MappingHelper mapString:rate[@"curCharCode"]];
+                    if ([currencyCode isEqualToString:@"USD"] && (currencyTypeFrom == CurrencyTypeUSD ||
+                                                                  currencyTypeTo == CurrencyTypeUSD ))
+                    {
+                        [needRates addObject:rate];
+                    }
+                    else if ([currencyCode isEqualToString:@"EUR"] && (currencyTypeFrom == CurrencyTypeEUR ||
+                                                                       currencyTypeTo == CurrencyTypeEUR )) {
+                        [needRates addObject:rate];
+                    }
+                    else if ([currencyCode isEqualToString:@"GBP"] && (currencyTypeFrom == CurrencyTypeGBP ||
+                                                                       currencyTypeTo == CurrencyTypeGBP )) {
+                        [needRates addObject:rate];
+                    }
+                    else if ([currencyCode isEqualToString:@"CHF"] && (currencyTypeFrom == CurrencyTypeCHF ||
+                                                                       currencyTypeTo == CurrencyTypeCHF )) {
+                        [needRates addObject:rate];
+                    }
+                }
+                NSDictionary *needRate = nil;
+                for (NSDictionary *rate in needRates) {
+                    NSString *operationType = [MappingHelper mapString:rate[@"operationType"]];
+                    
+                    if (currencyTypeFrom != CurrencyTypeRUB) {
+                        if ([operationType isEqualToString:@"S"]) {
+                            needRate = rate;
+                            break;
+                        }
+                    }
+                    else if (currencyTypeTo != CurrencyTypeRUB) {
+                        if ([operationType isEqualToString:@"B"]) {
+                            needRate = rate;
+                            break;
+                        }
+                    }
+                }
+                value = [MappingHelper mapFloat:needRate[@"rateValue"]];
+            }
+        }
+        call_completion_block(completionBlock, value, error);
     }];
 }
 
@@ -84,7 +130,9 @@
            progress:(void (^)(NSProgress * _Nonnull))uploadProgress
        onCompletion:(AnyObjectResponseBlock)completionBlock
 {
-    [self printUrlWithUrl:path andParams:params];
+#ifdef DEBUG
+    [self printUrlWithPath:path params:params];
+#endif
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
@@ -117,8 +165,6 @@
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    DDLogDebug(@"URL: %@", [self prepareRequestURL:path]);
-    
     [self GET:[self prepareRequestURL:path]
    parameters:[self prepareRequestParams:params]
      progress:downloadProgress
@@ -144,9 +190,9 @@
 
 #pragma mark - Helpers
 
-- (void)printUrlWithUrl:(NSString *)url andParams:(NSDictionary *)params
+- (void)printUrlWithPath:(NSString *)path params:(NSDictionary *)params
 {
-    NSMutableString *query_string = [self prepareRequestURL:url].mutableCopy;
+    NSMutableString *query_string = [self prepareRequestURL:path].mutableCopy;
     NSDictionary *prepared_params = [self prepareRequestParams:params];
     
     for (id key in prepared_params) {

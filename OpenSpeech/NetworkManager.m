@@ -8,7 +8,59 @@
 
 #import "NetworkManager.h"
 
+#import "MappingHelper.h"
+
 @implementation NetworkManager
+
+- (instancetype)initPrivate
+{
+    self = [super init];
+    return self;
+}
+
++ (instancetype)sharedInstance
+{
+    static NetworkManager *uniqueInstance = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        uniqueInstance = [[NetworkManager alloc] initPrivate];
+    });
+    
+    return uniqueInstance;
+}
+
+- (void)requestCardsOnCompletion:(ArrayResponseBlock)completionBlock
+{
+    [self GETRequest:@"MyCards/1.0.0/MyCardsInfo/cardlist"
+              params:nil
+            progress:nil
+        onCompletion:^(id  _Nullable data, NSError * _Nullable error)
+     {
+         NSMutableArray *cardObjects = nil;
+         NSError *localError = nil;
+         
+         if (error == nil) {
+             NSDictionary *response = data[@"Cards"];
+             if (response != nil) {
+                 
+                 NSInteger errorCode = [MappingHelper mapInt:response[@"ErrorCode"]].integerValue;
+                 if (errorCode == ErrorCodeNone) {
+                     
+                     NSArray<NSDictionary *> *cards = response[@"Card"];
+                     if (cards != nil) {
+                         cardObjects = [[NSMutableArray alloc] initWithCapacity:cards.count];
+                         for (NSDictionary *card in cards) {
+                             [cardObjects addObject:[[CardObject alloc] mapObjectFieldsFromRemoteDictionary:card]];
+                         }
+                     }
+                 }
+             }
+         }
+         error = (localError != nil ? localError : nil);
+         call_completion_block(completionBlock, cardObjects, error);
+     }];
+}
 
 - (void)POSTRequest:(NSString *)path
              params:(NSDictionary *)params
@@ -105,7 +157,7 @@
 
 - (NSString*)prepareRequestURL:(NSString*)localPath
 {
-    return [NSString stringWithFormat:@"%@%@", @"ADD_SERVER_URL", localPath];
+    return [NSString stringWithFormat:@"%@%@", @"https://api.open.ru/", localPath];
 }
 
 - (NSDictionary *)prepareRequestParams:(NSDictionary *)params

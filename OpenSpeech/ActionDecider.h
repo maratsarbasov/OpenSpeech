@@ -7,32 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSInteger, CurrencyType) {
-    CurrencyTypeUSD = 0,
-    CurrencyTypeRUB,
-    CurrencyTypeEUR
-};
-
-
-@interface AbstractAction : NSObject
-
-@end
-
-
-@interface ExchangeRatesAction : AbstractAction
-
-@property (nonatomic) CurrencyType currencyFrom;
-@property (nonatomic) CurrencyType currencyTo;
-@property (nonatomic) CGFloat amount;
-
-@end
-
-@interface FindNearestATMAction : AbstractAction
-
-@end
+#import <YandexSpeechKit/YSKRecognition.h>
 
 
 @interface ActionDecider : NSObject
+
++ (AbstractAction *)decideForRecognition:(YSKRecognition *)recognition;
 
 @end

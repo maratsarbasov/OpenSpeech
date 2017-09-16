@@ -14,6 +14,7 @@
 		4E0783A11F6D1F6600813126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0783A01F6D1F6600813126 /* Assets.xcassets */; };
 		4E0783A41F6D1F6600813126 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0783A21F6D1F6600813126 /* LaunchScreen.storyboard */; };
 		4E993DDF1F6D55AD0077F449 /* ActionDecider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E993DDE1F6D55AD0077F449 /* ActionDecider.m */; };
+		4E993DE21F6D6FE50077F449 /* ActionObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E993DE11F6D6FE50077F449 /* ActionObjects.m */; };
 		9F961BF01F6D27E2004839E3 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BEF1F6D27E2004839E3 /* NetworkManager.m */; };
 		9F961BF91F6D3AE7004839E3 /* CardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BF81F6D3AE7004839E3 /* CardObject.m */; };
 		9F961BFD1F6D4BA6004839E3 /* AbstractObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BFC1F6D4BA6004839E3 /* AbstractObject.m */; };
@@ -35,6 +36,8 @@
 		4E0783A51F6D1F6600813126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E993DDD1F6D55AD0077F449 /* ActionDecider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDecider.h; sourceTree = "<group>"; };
 		4E993DDE1F6D55AD0077F449 /* ActionDecider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionDecider.m; sourceTree = "<group>"; };
+		4E993DE01F6D6FE50077F449 /* ActionObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionObjects.h; sourceTree = "<group>"; };
+		4E993DE11F6D6FE50077F449 /* ActionObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionObjects.m; sourceTree = "<group>"; };
 		529F3097757AF04A9F63EF1F /* Pods-OpenSpeech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSpeech.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenSpeech/Pods-OpenSpeech.release.xcconfig"; sourceTree = "<group>"; };
 		9F961BEE1F6D27E2004839E3 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		9F961BEF1F6D27E2004839E3 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 			children = (
 				4E0783971F6D1F6600813126 /* AppDelegate.h */,
 				4E0783981F6D1F6600813126 /* AppDelegate.m */,
+				4E993DE01F6D6FE50077F449 /* ActionObjects.h */,
+				4E993DE11F6D6FE50077F449 /* ActionObjects.m */,
 				4E07839A1F6D1F6600813126 /* ViewController.h */,
 				4E07839B1F6D1F6600813126 /* ViewController.m */,
 				4E993DDD1F6D55AD0077F449 /* ActionDecider.h */,
@@ -278,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E993DE21F6D6FE50077F449 /* ActionObjects.m in Sources */,
 				9F961BF01F6D27E2004839E3 /* NetworkManager.m in Sources */,
 				9F961BF91F6D3AE7004839E3 /* CardObject.m in Sources */,
 				9F961BFD1F6D4BA6004839E3 /* AbstractObject.m in Sources */,

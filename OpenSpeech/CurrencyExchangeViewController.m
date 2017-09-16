@@ -20,6 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.activityIndicator startAnimating];
+    
+    [[NetworkManager sharedInstance] requestRatesForCurrencyTypeFrom:self.action.currencyFrom forCurrencyTypeTo:self.action.currencyTo onCompletion:^(NSArray * _Nullable data, NSError * _Nullable error) {
+        [self.activityIndicator stopAnimating];
+        self.mainLabel.text = 
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

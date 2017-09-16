@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <YandexSpeechKit/YSKRecognition.h>
 
+#import "ActionObjects.h"
+
 
 @interface ActionDecider : NSObject
 

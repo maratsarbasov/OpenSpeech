@@ -6,7 +6,7 @@
 //  Copyright © 2017 Top ProGear. All rights reserved.
 //
 
-#import "ActionDecider.h"
+#import "ActionObjects.h"
 
 #define EXCHANGE_RATES_RULE_WORDS @[@"перевести", @"долларов", @"доллары", @"евро", @"рубли", @"рублей"]
 #define FIND_NEAREST_ATM_RULE_WORDS @[@"банкомат", @"найти", @"найди", @"ближайший"]
@@ -23,7 +23,7 @@
     
     if (exchangeRatesScore > findNearestATMScore)
     {
-        return [[ExchangeRatesAction alloc] initWithWords:(NSArray *)words];
+        return [[ExchangeRatesAction alloc] initWithWords:words];
     }
     else
     {

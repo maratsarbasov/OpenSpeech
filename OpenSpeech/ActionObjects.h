@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger, CurrencyType) {
 @property (nonatomic) CurrencyType currencyTo;
 @property (nonatomic) CGFloat amount;
 
+- (instancetype)initWithWords:(NSArray *)words;
+
 @end
 
 @interface FindNearestATMAction : AbstractAction

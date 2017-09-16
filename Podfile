@@ -4,6 +4,7 @@ platform :ios, '8.0'
 
 def shared_pods
     pod 'YandexSpeechKit', '~> 2.5’
+    pod 'AFNetworking', '~> 3.0'
 end
 
 target ‘OpenSpeech’ do

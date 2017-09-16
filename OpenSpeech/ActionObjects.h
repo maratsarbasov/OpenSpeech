@@ -1,5 +1,5 @@
 //
-//  ActionDecider.h
+//  Actions.h
 //  OpenSpeech
 //
 //  Created by Marat Sarbasov on 16/09/2017.
@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <YandexSpeechKit/YSKRecognition.h>
+
 
 typedef NS_ENUM(NSInteger, CurrencyType) {
     CurrencyTypeUSD = 0,
     CurrencyTypeRUB,
-    CurrencyTypeEUR,
-    CurrencyTypeGBP,
-    CurrencyTypeCHF
+    CurrencyTypeEUR
 };
 
 
@@ -29,15 +27,10 @@ typedef NS_ENUM(NSInteger, CurrencyType) {
 @property (nonatomic) CurrencyType currencyTo;
 @property (nonatomic) CGFloat amount;
 
+- (instancetype)initWithWords:(NSArray *)words;
+
 @end
 
 @interface FindNearestATMAction : AbstractAction
-
-@end
-
-
-@interface ActionDecider : NSObject
-
-+ (AbstractAction *)decideForRecognition:(YSKRecognition *)recognition;
 
 @end

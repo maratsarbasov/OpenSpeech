@@ -24,10 +24,20 @@
     [self.activityIndicator startAnimating];
     
     [[NetworkManager sharedInstance] requestCardsOnCompletion:^(NSArray * _Nullable data, NSError * _Nullable error) {
-        [self.activityIndicator stopAnimating];
         self.cards = data;
         self.cardsTableView.hidden = NO;
-        [self.cardsTableView reloadData];
+        
+        for (int i = 0; i < self.cards.count; i++)
+        {
+            CardObject *card = self.cards[i];
+            [[NetworkManager sharedInstance] requestBalanceForCard:card onCompletion:^(id  _Nullable data, NSError * _Nullable error) {
+                if (i == self.cards.count - 1)
+                {
+                    [self.cardsTableView reloadData];
+                    [self.activityIndicator stopAnimating];
+                }
+            }];
+        }
     }];
 }
 
@@ -70,8 +80,7 @@
 
 - (IBAction)dismiss:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

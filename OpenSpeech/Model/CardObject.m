@@ -87,4 +87,27 @@
     return CurrencyTypeNone;
 }
 
++ (NSString *)stringForCurrency:(CurrencyType)currencyType
+{
+    switch (currencyType) {
+        case CurrencyTypeUSD:
+            return @"USD";
+            break;
+        case CurrencyTypeRUB:
+            return @"RUB";
+            break;
+        case CurrencyTypeEUR:
+            return @"EUR";
+            break;
+        case CurrencyTypeGBP:
+            return @"GBP";
+            break;
+        case CurrencyTypeCHF:
+            return @"CHF";
+            break;       
+        default:
+            return nil;
+    }
+}
+
 @end

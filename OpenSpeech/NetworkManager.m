@@ -70,7 +70,7 @@
      }];
 }
 
-- (void)requstBalanceForCard:(CardObject *)cardObject onCompletion:(AnyObjectResponseBlock)completionBlock
+- (void)requestBalanceForCard:(CardObject *)cardObject onCompletion:(AnyObjectResponseBlock)completionBlock
 {
     [self POSTRequest:@"/MyCards/1.0.0/MyCardsInfo/balance"
                params:@{ @"CardId" : cardObject.pk }

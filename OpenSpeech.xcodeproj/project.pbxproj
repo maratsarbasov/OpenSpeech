@@ -20,6 +20,8 @@
 		9F961BF01F6D27E2004839E3 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BEF1F6D27E2004839E3 /* NetworkManager.m */; };
 		9F961BF91F6D3AE7004839E3 /* CardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BF81F6D3AE7004839E3 /* CardObject.m */; };
 		9F961BFD1F6D4BA6004839E3 /* AbstractObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BFC1F6D4BA6004839E3 /* AbstractObject.m */; };
+		9FA388A11F6E963400751F60 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA388A01F6E963400751F60 /* MapViewController.m */; };
+		9FA388A41F6E997000751F60 /* ATMObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA388A31F6E997000751F60 /* ATMObject.m */; };
 		9FE48DB61F6D50AB0037A3AC /* MappingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE48DB51F6D50AB0037A3AC /* MappingHelper.m */; };
 		F17A32B56042125D99FB4560 /* libPods-OpenSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5BF7D7943548FB3575F565 /* libPods-OpenSpeech.a */; };
 /* End PBXBuildFile section */
@@ -53,6 +55,10 @@
 		9F961BF81F6D3AE7004839E3 /* CardObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardObject.m; path = Model/CardObject.m; sourceTree = "<group>"; };
 		9F961BFB1F6D4BA6004839E3 /* AbstractObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractObject.h; path = Model/AbstractObject.h; sourceTree = "<group>"; };
 		9F961BFC1F6D4BA6004839E3 /* AbstractObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractObject.m; path = Model/AbstractObject.m; sourceTree = "<group>"; };
+		9FA3889F1F6E963400751F60 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		9FA388A01F6E963400751F60 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		9FA388A21F6E997000751F60 /* ATMObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATMObject.h; path = Model/ATMObject.h; sourceTree = "<group>"; };
+		9FA388A31F6E997000751F60 /* ATMObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATMObject.m; path = Model/ATMObject.m; sourceTree = "<group>"; };
 		9FE48DB21F6D4EE80037A3AC /* BasicDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDefines.h; sourceTree = "<group>"; };
 		9FE48DB41F6D50AB0037A3AC /* MappingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MappingHelper.h; path = Helpers/MappingHelper.h; sourceTree = "<group>"; };
 		9FE48DB51F6D50AB0037A3AC /* MappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MappingHelper.m; path = Helpers/MappingHelper.m; sourceTree = "<group>"; };
@@ -121,6 +127,8 @@
 				4E0783941F6D1F6600813126 /* Supporting Files */,
 				9F961BEE1F6D27E2004839E3 /* NetworkManager.h */,
 				9F961BEF1F6D27E2004839E3 /* NetworkManager.m */,
+				9FA3889F1F6E963400751F60 /* MapViewController.h */,
+				9FA388A01F6E963400751F60 /* MapViewController.m */,
 			);
 			path = OpenSpeech;
 			sourceTree = "<group>";
@@ -143,6 +151,8 @@
 				9F961BFC1F6D4BA6004839E3 /* AbstractObject.m */,
 				9F961BF71F6D3AE7004839E3 /* CardObject.h */,
 				9F961BF81F6D3AE7004839E3 /* CardObject.m */,
+				9FA388A21F6E997000751F60 /* ATMObject.h */,
+				9FA388A31F6E997000751F60 /* ATMObject.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -243,6 +253,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-OpenSpeech/Pods-OpenSpeech-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/YandexSpeechKit/YandexSpeechKit.framework/Versions/A/Resources/YandexSpeechKit.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -297,11 +308,13 @@
 				4E993DE21F6D6FE50077F449 /* ActionObjects.m in Sources */,
 				9F961BF01F6D27E2004839E3 /* NetworkManager.m in Sources */,
 				9F961BF91F6D3AE7004839E3 /* CardObject.m in Sources */,
+				9FA388A11F6E963400751F60 /* MapViewController.m in Sources */,
 				9F961BFD1F6D4BA6004839E3 /* AbstractObject.m in Sources */,
 				4E07839C1F6D1F6600813126 /* ViewController.m in Sources */,
 				9FE48DB61F6D50AB0037A3AC /* MappingHelper.m in Sources */,
 				4E0783991F6D1F6600813126 /* AppDelegate.m in Sources */,
 				4E0783961F6D1F6600813126 /* main.m in Sources */,
+				9FA388A41F6E997000751F60 /* ATMObject.m in Sources */,
 				4E993DE51F6D85500077F449 /* CurrencyExchangeViewController.m in Sources */,
 				4EF444461F6E6790005D59DE /* CardListViewController.m in Sources */,
 				4E993DDF1F6D55AD0077F449 /* ActionDecider.m in Sources */,

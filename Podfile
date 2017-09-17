@@ -7,6 +7,7 @@ def shared_pods
     pod 'AFNetworking', '~> 3.0'
     pod 'CocoaLumberjack', '~> 2.3.0'
     pod 'XMLDictionary'
+    pod 'GoogleMaps'
 end
 
 target ‘OpenSpeech’ do

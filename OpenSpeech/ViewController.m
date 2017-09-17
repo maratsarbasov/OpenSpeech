@@ -7,10 +7,13 @@
 //
 
 #import "ViewController.h"
-#import "ActionObjects.h"
-#import "ActionDecider.h"
 #import "CurrencyExchangeViewController.h"
 #import "CardListViewController.h"
+#import "MapViewController.h"
+
+#import "ActionObjects.h"
+#import "ActionDecider.h"
+
 
 #import <YandexSpeechKit/YSKRecognizer.h>
 #import <YandexSpeechKit/YSKRecognition.h>
@@ -37,14 +40,17 @@
     _isListening = isListening;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)startListening:(id)sender
 {
+    MapViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MapViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
+    self.isListening = NO;
+    
     self.isListening = YES;
     self.recognizer = [[YSKRecognizer alloc] initWithLanguage:YSKRecognitionLanguageRussian model:YSKRecognitionModelGeneral];
     self.recognizer.delegate = self;
@@ -87,6 +93,13 @@
         }];
         return;
     }
+    else if ([action isKindOfClass:[FindNearestATMAction class]])
+    {
+        MapViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MapViewController"];
+        [self presentViewController:vc animated:YES completion:nil];
+        self.isListening = NO;
+    }
+    
     self.isListening = NO;
 }
 

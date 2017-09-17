@@ -14,6 +14,7 @@
 #define CHF_WORDS @[@"китайская", @"юань", @"юаней", @"юанях", @"китайских", @"китайские"]
 #define EUR_WORDS @[@"евро"]
 
+
 @implementation ExchangeRatesAction
 
 - (instancetype)initWithWords:(NSArray *)words

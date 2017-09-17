@@ -6,8 +6,6 @@
 //  Copyright © 2017 Top ProGear. All rights reserved.
 //
 
-#import "ViewController.h"
-
-@interface MapViewController : ViewController
+@interface MapViewController : UIViewController
 
 @end

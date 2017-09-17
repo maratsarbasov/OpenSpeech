@@ -17,6 +17,7 @@
 #import "CardObject.h"
 #import "ATMObject.h"
 
+#import <YandexSpeechKit/SpeechKit.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
 extern const DDLogLevel ddLogLevel;
 

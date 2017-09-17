@@ -6,9 +6,6 @@
 //  Copyright © 2017 Top ProGear. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <YandexSpeechKit/YSKRecognition.h>
-
 #import "ActionObjects.h"
 
 

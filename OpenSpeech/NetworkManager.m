@@ -198,14 +198,10 @@
            progress:(nullable void (^)(NSProgress *))uploadProgress
        onCompletion:(AnyObjectResponseBlock)completionBlock
 {
-#ifdef DEBUG
-    [self printUrlWithPath:path params:params];
-#endif
-    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     [self POST:[self prepareRequestURL:path]
-    parameters:[self prepareRequestParams:params]
+    parameters:params
       progress:uploadProgress
        success:^(NSURLSessionDataTask *__unused task, id JSON)
      {
@@ -219,10 +215,9 @@
      {
          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
          
-         DDLogDebug(@"Error: %@", requestError);
-         
-         if (completionBlock)
-         completionBlock(nil, requestError);
+         if (completionBlock) {
+             completionBlock(nil, requestError);
+         }
      }];
 }
 
@@ -234,7 +229,7 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     [self GET:[self prepareRequestURL:path]
-   parameters:[self prepareRequestParams:params]
+   parameters:params
      progress:downloadProgress
       success:^(NSURLSessionDataTask * __unused task, id JSON)
      {
@@ -248,8 +243,6 @@
      {
          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
          
-         DDLogDebug(@"Error: %@", requestError);
-         
          if (completionBlock) {
              completionBlock(nil, requestError);
          }
@@ -258,44 +251,9 @@
 
 #pragma mark - Helpers
 
-- (void)printUrlWithPath:(NSString *)path params:(NSDictionary *)params
-{
-    NSMutableString *query_string = [self prepareRequestURL:path].mutableCopy;
-    NSDictionary *prepared_params = [self prepareRequestParams:params];
-    
-    for (id key in prepared_params) {
-        NSString *key_string = [key description];
-        NSString *value_string = [prepared_params[key] description];
-        
-        if ([query_string rangeOfString:@"?"].location == NSNotFound) {
-            [query_string appendFormat:@"?%@=%@", [self urlEscapeString:key_string], [self urlEscapeString:value_string]];
-        }
-        else {
-            [query_string appendFormat:@"&%@=%@", [self urlEscapeString:key_string], [self urlEscapeString:value_string]];
-        }
-    }
-    
-    DDLogDebug(@"URL Response: %@", query_string);
-}
-
-- (NSString*)urlEscapeString:(NSString *)unencodedString
-{
-    CFStringRef originalStringRef = (__bridge_retained CFStringRef)unencodedString;
-    NSString *s = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,originalStringRef, NULL, (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ", kCFStringEncodingUTF8);
-    CFRelease(originalStringRef);
-    return s;
-}
-
 - (NSString*)prepareRequestURL:(NSString*)localPath
 {
     return [NSString stringWithFormat:@"%@%@", @"https://api.open.ru/", localPath];
-}
-
-- (NSDictionary *)prepareRequestParams:(NSDictionary *)params
-{
-    NSMutableDictionary *paramsMutable = params.mutableCopy;
-
-    return paramsMutable;
 }
 
 @end

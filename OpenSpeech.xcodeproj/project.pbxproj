@@ -108,27 +108,13 @@
 			children = (
 				4E0783971F6D1F6600813126 /* AppDelegate.h */,
 				4E0783981F6D1F6600813126 /* AppDelegate.m */,
-				4E993DE01F6D6FE50077F449 /* ActionObjects.h */,
-				4E993DE11F6D6FE50077F449 /* ActionObjects.m */,
-				4E07839A1F6D1F6600813126 /* ViewController.h */,
-				4E07839B1F6D1F6600813126 /* ViewController.m */,
-				4E993DE31F6D85500077F449 /* CurrencyExchangeViewController.h */,
-				4E993DE41F6D85500077F449 /* CurrencyExchangeViewController.m */,
-				4E993DDD1F6D55AD0077F449 /* ActionDecider.h */,
-				4E993DDE1F6D55AD0077F449 /* ActionDecider.m */,
-				4E07839D1F6D1F6600813126 /* Main.storyboard */,
-				4EF444441F6E6790005D59DE /* CardListViewController.h */,
-				4EF444451F6E6790005D59DE /* CardListViewController.m */,
-				4E0783A01F6D1F6600813126 /* Assets.xcassets */,
-				4E0783A21F6D1F6600813126 /* LaunchScreen.storyboard */,
-				4E0783A51F6D1F6600813126 /* Info.plist */,
-				9F961BF61F6D3AB2004839E3 /* Models */,
-				9FE48DB31F6D50870037A3AC /* Helpers */,
-				4E0783941F6D1F6600813126 /* Supporting Files */,
 				9F961BEE1F6D27E2004839E3 /* NetworkManager.h */,
 				9F961BEF1F6D27E2004839E3 /* NetworkManager.m */,
-				9FA3889F1F6E963400751F60 /* MapViewController.h */,
-				9FA388A01F6E963400751F60 /* MapViewController.m */,
+				4EF4446B1F6EA332005D59DE /* Actions */,
+				9F961BF61F6D3AB2004839E3 /* Models */,
+				4EF4446A1F6EA306005D59DE /* ViewControllers */,
+				9FE48DB31F6D50870037A3AC /* Helpers */,
+				4E0783941F6D1F6600813126 /* Supporting Files */,
 			);
 			path = OpenSpeech;
 			sourceTree = "<group>";
@@ -136,12 +122,42 @@
 		4E0783941F6D1F6600813126 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4E07839D1F6D1F6600813126 /* Main.storyboard */,
+				4E0783A01F6D1F6600813126 /* Assets.xcassets */,
+				4E0783A21F6D1F6600813126 /* LaunchScreen.storyboard */,
+				4E0783A51F6D1F6600813126 /* Info.plist */,
 				9F961BF51F6D2DE8004839E3 /* OpenSpeech-Prefix.pch */,
 				9FE48DB21F6D4EE80037A3AC /* BasicDefines.h */,
 				9F961BF31F6D2957004839E3 /* CustomBlocks.h */,
 				4E0783951F6D1F6600813126 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EF4446A1F6EA306005D59DE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4E07839A1F6D1F6600813126 /* ViewController.h */,
+				4E07839B1F6D1F6600813126 /* ViewController.m */,
+				4E993DE31F6D85500077F449 /* CurrencyExchangeViewController.h */,
+				4E993DE41F6D85500077F449 /* CurrencyExchangeViewController.m */,
+				4EF444441F6E6790005D59DE /* CardListViewController.h */,
+				4EF444451F6E6790005D59DE /* CardListViewController.m */,
+				9FA3889F1F6E963400751F60 /* MapViewController.h */,
+				9FA388A01F6E963400751F60 /* MapViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4EF4446B1F6EA332005D59DE /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				4E993DE01F6D6FE50077F449 /* ActionObjects.h */,
+				4E993DE11F6D6FE50077F449 /* ActionObjects.m */,
+				4E993DDD1F6D55AD0077F449 /* ActionDecider.h */,
+				4E993DDE1F6D55AD0077F449 /* ActionDecider.m */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 		9F961BF61F6D3AB2004839E3 /* Models */ = {

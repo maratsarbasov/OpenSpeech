@@ -17,8 +17,9 @@
 
 #import <YandexSpeechKit/YSKRecognizer.h>
 #import <YandexSpeechKit/YSKRecognition.h>
+#import <YandexSpeechKit/YSKRecognizerDelegate.h>
 
-@interface ViewController ()
+@interface ViewController () <YSKRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *listeningIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *listeningLabel;
@@ -41,27 +42,13 @@
     _isListening = isListening;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (IBAction)startListening:(id)sender
 {
-//    MapViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MapViewController"];
-//    [self presentViewController:vc animated:YES completion:nil];
-//    self.isListening = NO;
-    
     self.errorLabel.hidden = YES;
     self.isListening = YES;
     self.recognizer = [[YSKRecognizer alloc] initWithLanguage:YSKRecognitionLanguageRussian model:YSKRecognitionModelGeneral];
     self.recognizer.delegate = self;
     [self.recognizer start];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)recognizer:(YSKRecognizer *)recognizer didCompleteWithResults:(YSKRecognition *)results
@@ -92,7 +79,6 @@
     }
     else if ([action isKindOfClass:[ShowMyCardsAction class]])
     {
-        ShowMyCardsAction *act = (ShowMyCardsAction *)action;
         CardListViewController *destination = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CardListViewController"];
         [self presentViewController:destination animated:YES completion:^{
             self.isListening = NO;

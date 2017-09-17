@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import <YandexSpeechKit/SpeechKit.h>
-
 #ifdef DEBUG
     const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else

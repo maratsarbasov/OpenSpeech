@@ -70,6 +70,28 @@
      }];
 }
 
+- (void)requstBalanceForCard:(CardObject *)cardObject onCompletion:(AnyObjectResponseBlock)completionBlock
+{
+    [self POSTRequest:@"/MyCards/1.0.0/MyCardsInfo/balance"
+               params:@{ @"CardId" : cardObject.pk }
+             progress:nil
+         onCompletion:^(id  _Nullable data, NSError * _Nullable error)
+     {
+         NSDictionary *response = data;
+         if (response != nil) {
+             
+             NSInteger errorCode = [MappingHelper mapInt:response[@"ErrorCode"]].integerValue;
+             if (errorCode == ErrorCodeNone) {
+                 NSArray *cardBalance = response[@"CardBalance"];
+                 if (cardBalance.firstObject != nil) {
+                     [cardObject mapBalanceFieldsFromRemoteDictionary:cardBalance.firstObject];
+                 }
+             }
+         }
+         call_completion_block(completionBlock, cardObject, error);
+     }];
+}
+
 - (void)requestRatesForCurrencyTypeFrom:(CurrencyType)currencyTypeFrom
                       forCurrencyTypeTo:(CurrencyType)currencyTypeTo
                            onCompletion:(NumberResponseBlock)completionBlock
@@ -177,7 +199,7 @@
 
 - (void)POSTRequest:(NSString *)path
              params:(NSDictionary *)params
-           progress:(void (^)(NSProgress * _Nonnull))uploadProgress
+           progress:(nullable void (^)(NSProgress *))uploadProgress
        onCompletion:(AnyObjectResponseBlock)completionBlock
 {
 #ifdef DEBUG

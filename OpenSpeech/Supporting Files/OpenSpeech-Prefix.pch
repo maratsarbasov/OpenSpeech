@@ -12,6 +12,10 @@
 @import Foundation;
 @import CoreLocation;
 
+
+#import "AbstractObject.h"
+#import "CardObject.h"
+
 #import <CocoaLumberjack/CocoaLumberjack.h>
 extern const DDLogLevel ddLogLevel;
 
@@ -19,8 +23,5 @@ extern const DDLogLevel ddLogLevel;
 #import "BasicDefines.h"
 
 #import "NetworkManager.h"
-
-#import "AbstractObject.h"
-#import "CardObject.h"
 
 #endif

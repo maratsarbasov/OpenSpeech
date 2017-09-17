@@ -10,6 +10,8 @@
 
 #define RUB_WORDS @[@"рублей", @"рубль", @"рубля", @"р", @"рубли", @"рублях"]
 #define USD_WORDS @[@"доллар", @"доллара", @"долларов", @"доллары", @"долларах"]
+#define GBP_WORDS @[@"фунт", @"фунтов", @"фунта", @"стерлингов", @"фунтах", @"фунты"]
+#define CHF_WORDS @[@"китайская", @"юань", @"юаней", @"юанях", @"китайских", @"китайские"]
 #define EUR_WORDS @[@"евро"]
 
 @implementation ExchangeRatesAction
@@ -42,43 +44,40 @@
                 currencyFromFound = true;
             }
             
+            CurrencyType *currentField;
+            if (currencyFromFound)
+            {
+                currentField = &_currencyTo;
+            }
+            else
+            {
+                currentField = &_currencyFrom;
+            }
+            
             if ([RUB_WORDS containsObject:word])
             {
-                if (currencyFromFound)
-                {
-                    _currencyTo = CurrencyTypeRUB;
-                }
-                else
-                {
-                    _currencyFrom = CurrencyTypeRUB;
-                    currencyFromFound = true;
-                }
+                *currentField = CurrencyTypeRUB;
+                currencyFromFound = YES;
             }
-            
-            if ([USD_WORDS containsObject:word])
+            else if ([USD_WORDS containsObject:word])
             {
-                if (currencyFromFound)
-                {
-                    _currencyTo = CurrencyTypeUSD;
-                }
-                else
-                {
-                    _currencyFrom = CurrencyTypeUSD;
-                    currencyFromFound = true;
-                }
+                *currentField = CurrencyTypeUSD;
+                currencyFromFound = YES;
             }
-            
-            if ([EUR_WORDS containsObject:word])
+            else if ([EUR_WORDS containsObject:word])
             {
-                if (currencyFromFound)
-                {
-                    _currencyTo = CurrencyTypeEUR;
-                }
-                else
-                {
-                    _currencyFrom = CurrencyTypeEUR;
-                    currencyFromFound = true;
-                }
+                *currentField = CurrencyTypeEUR;
+                currencyFromFound = YES;
+            }
+            else if ([GBP_WORDS containsObject:word])
+            {
+                *currentField = CurrencyTypeGBP;
+                currencyFromFound = YES;
+            }
+            else if ([CHF_WORDS containsObject:word])
+            {
+                *currentField = CurrencyTypeCHF;
+                currencyFromFound = YES;
             }
         }
     }

@@ -42,10 +42,10 @@
 
     // Do any additional setup after loading the view, typically from a nib.
     
-//    [[NetworkManager sharedInstance] requestNearATMsForLocation:[[CLLocation alloc] initWithLatitude:37.6167 longitude:55.7500]
-//                                                   onCompletion:^(NSNumber * _Nullable number, NSError * _Nullable error) {
+    [[NetworkManager sharedInstance] requestNearATMsForLocation:[[CLLocation alloc] initWithLatitude:37.6167 longitude:55.7500]
+                                                   onCompletion:^(NSNumber * _Nullable number, NSError * _Nullable error) {
         
-//    }];
+    }];
 }
 
 - (IBAction)startListening:(id)sender

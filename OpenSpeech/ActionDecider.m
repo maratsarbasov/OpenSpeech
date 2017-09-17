@@ -8,8 +8,9 @@
 
 #import "ActionObjects.h"
 
-#define EXCHANGE_RATES_RULE_WORDS @[@"перевести", @"долларов", @"доллары", @"евро", @"рубли", @"рублей", @"рублях", @"долларах"]
-#define FIND_NEAREST_ATM_RULE_WORDS @[@"банкомат", @"найти", @"найди", @"ближайший"]
+#define EXCHANGE_RATES_RULE_WORDS @[@"перевести", @"переведи", @"долларов", @"доллары", @"евро", @"рубли", @"рублей", \
+    @"рублях", @"долларах", @"юаней", @"фунты", @"фунтах", @"фунты"]
+#define FIND_NEAREST_ATM_RULE_WORDS @[@"банкомат", @"найти", @"найди", @"ближайший", @"недалеко"]
 #define SHOW_MY_CARDS_RULE_WORDS @[@"мои", @"карты", @"карточки", @"покажи", @"список", @"карт"]
 
 @implementation ActionDecider

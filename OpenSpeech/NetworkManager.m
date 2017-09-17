@@ -9,6 +9,7 @@
 #import "NetworkManager.h"
 
 #import "MappingHelper.h"
+#import <XMLDictionary/XMLDictionary.h>
 
 @implementation NetworkManager
 
@@ -131,33 +132,46 @@
 - (void)requestNearATMsForLocation:(CLLocation *)location
                       onCompletion:(NumberResponseBlock)completionBlock
 {
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/xml"];
-    manager.requestSerializer = [[AFHTTPRequestSerializer alloc] init];
-    [manager.requestSerializer setValue:@"text/xml" forHTTPHeaderField:@"Accept"];
-    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:@"POST"
-                                                                   URLString:@"https://api.open.ru/geocoding/1.0.0/getNearOpenATM"
-                                                                  parameters:nil
-                                                                       error:nil];
-    request.HTTPBody = [@"<?xml version=’1.0’?><getNearATM><coordinates><latitude>55.79073446</latitude><longitude>37.70538694</longitude></coordinates></getNearATM>" dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.open.ru/geocoding/1.0.0/getNearATM"]];
     
-    NSURLSessionDataTask *task = [manager dataTaskWithRequest:request
-                                            completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error)
-    {
-        NSString *fetchedXML = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"Response string: %@",fetchedXML);
+    NSString *userUpdate =@"<?xml version=\"1.0\"?><getNearATM><coordinates><latitude>55.79073446</latitude><longitude>37.70538694</longitude></coordinates></getNearATM>";
+    
+    //create the Method "GET" or "POST"
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"text/xml" forHTTPHeaderField:@"Content-Type"];
+    
+    //Convert the String to Data
+    NSData *data1 = [userUpdate dataUsingEncoding:NSUTF8StringEncoding];
+    
+    //Apply the data to the body
+    [urlRequest setHTTPBody:data1];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if(httpResponse.statusCode == 200)
+        {
+            NSError *parseError = nil;
+            
+            
+            NSDictionary *responseDictionary = [[XMLDictionaryParser sharedInstance] dictionaryWithData:data];
+            NSLog(@"The response is - %@",responseDictionary);
+            NSInteger success = [[responseDictionary objectForKey:@"success"] integerValue];
+            if(success == 1)
+            {
+                NSLog(@"Login SUCCESS");
+            }
+            else
+            {
+                NSLog(@"Login FAILURE");
+            }
+        }
+        else
+        {
+            NSLog(@"Error");
+        }
     }];
-    [task resume];
-//
-//    [self POSTRequest:@"geocoding/1.0.0/getNearATM"
-//               params:@{ @"coordinates" : @{@"latitude": @(location.coordinate.latitude),
-//                                            @"longitude": @(location.coordinate.longitude)}}
-//            progress:nil
-//        onCompletion:^(id  _Nullable data, NSError * _Nullable error) {
-//            
-//    }];
-}
+    [dataTask resume];}
 
 #pragma mark - Base
 

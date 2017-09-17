@@ -11,7 +11,7 @@
 #define RUB_WORDS @[@"рублей", @"рубль", @"рубля", @"р", @"рубли", @"рублях"]
 #define USD_WORDS @[@"доллар", @"доллара", @"долларов", @"доллары", @"долларах"]
 #define GBP_WORDS @[@"фунт", @"фунтов", @"фунта", @"стерлингов", @"фунтах", @"фунты"]
-#define CHF_WORDS @[@"китайская", @"юань", @"юаней", @"юанях", @"китайских", @"китайские"]
+#define CHF_WORDS @[@"китайская", @"юань", @"юани", @"юаней", @"юанях", @"китайских", @"китайские"]
 #define EUR_WORDS @[@"евро"]
 
 
@@ -31,7 +31,7 @@
             }
             
             unichar lastLetter = [word characterAtIndex:(word.length - 1)];
-            if (lastLetter == L'$' || lastLetter == L'€')
+            if (lastLetter == L'$' || lastLetter == L'€' || lastLetter == L'£')
             {
                 _amount = [[word substringToIndex:(word.length - 1)] integerValue];
                 if (lastLetter == L'$')
@@ -41,6 +41,10 @@
                 else if (lastLetter == L'€')
                 {
                     _currencyFrom = CurrencyTypeEUR;
+                }
+                else if (lastLetter == L'£')
+                {
+                    _currencyFrom = CurrencyTypeGBP;
                 }
                 currencyFromFound = true;
             }

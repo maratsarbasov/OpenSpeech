@@ -37,7 +37,13 @@
         }
         else
         {
-            NSAssert(false, @"not implemented");
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+                                                                           message:@"Повторите запрос, пожалуйста" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                [self dismiss:action];
+            }];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
         }
 
         self.mainLabel.text = [NSString stringWithFormat:@"%.2f %@ -> %.2f %@", self.action.amount, [CardObject stringForCurrency:self.action.currencyFrom], result, [CardObject stringForCurrency:self.action.currencyTo]];

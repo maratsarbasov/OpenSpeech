@@ -20,8 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     [self.activityIndicator startAnimating];
+    self.cardsTableView.allowsSelection = NO;
     
     [[NetworkManager sharedInstance] requestCardsOnCompletion:^(NSArray * _Nullable data, NSError * _Nullable error) {
         self.cards = data;
@@ -60,7 +61,7 @@
     
     CardObject *card = self.cards[indexPath.row];
     
-    cell.textLabel.text = card.name;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@ %@", card.name, card.value, [CardObject stringForCurrency:card.currencyType]];
     
     switch (card.cardPaymentSystem) {
         case CardPaymentSystemMir:

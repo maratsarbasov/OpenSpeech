@@ -253,7 +253,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-OpenSpeech/Pods-OpenSpeech-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/YandexSpeechKit/YandexSpeechKit.framework/Versions/A/Resources/YandexSpeechKit.bundle",
 			);
 			name = "[CP] Copy Pods Resources";

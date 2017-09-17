@@ -22,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *listeningIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *listeningLabel;
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 @property (nonatomic) BOOL isListening;
 @property (weak, nonatomic) IBOutlet UIButton *startListenButton;
 
@@ -47,10 +48,11 @@
 
 - (IBAction)startListening:(id)sender
 {
-    MapViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MapViewController"];
-    [self presentViewController:vc animated:YES completion:nil];
-    self.isListening = NO;
+//    MapViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MapViewController"];
+//    [self presentViewController:vc animated:YES completion:nil];
+//    self.isListening = NO;
     
+    self.errorLabel.hidden = YES;
     self.isListening = YES;
     self.recognizer = [[YSKRecognizer alloc] initWithLanguage:YSKRecognitionLanguageRussian model:YSKRecognitionModelGeneral];
     self.recognizer.delegate = self;
@@ -70,9 +72,13 @@
     if (!action)
     {
         NSLog(@"Can't recognize command");
+        self.errorLabel.hidden = NO;
+        self.errorLabel.text = @"Не удалось распознать команду";
         self.isListening = NO;
         return;
     }
+    
+    self.errorLabel.hidden = YES;
     
     if ([action isKindOfClass:[ExchangeRatesAction class]])
     {
@@ -106,6 +112,8 @@
 - (void)recognizer:(YSKRecognizer *)recognizer didFailWithError:(NSError *)error
 {
     self.isListening = NO;
+    self.errorLabel.hidden = NO;
+    self.errorLabel.text = @"Не удалось распознать команду";
     DDLogDebug(@"%@", error);
 }
 

@@ -154,9 +154,11 @@
 - (void)requestNearATMsForLocation:(CLLocation *)location
                       onCompletion:(AnyObjectResponseBlock)completionBlock
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[self prepareRequestURL:@"geocoding/1.0.0/getNearATM"]]];
     
-    NSString *userUpdate =@"<?xml version=\"1.0\"?><getNearATM><coordinates><latitude>55.79073446</latitude><longitude>37.70538694</longitude></coordinates></getNearATM>";
+    NSString *userUpdate = [NSString stringWithFormat:@"<?xml version=\"1.0\"?><getNearATM><coordinates><latitude>%.8f</latitude><longitude>%.8f</longitude></coordinates></getNearATM>", location.coordinate.latitude, location.coordinate.longitude];
     
     //create the Method "GET" or "POST"
     [urlRequest setHTTPMethod:@"POST"];
@@ -171,6 +173,8 @@
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                                    
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         ATMObject *atmObject = nil;
         if (httpResponse.statusCode == 200) {
@@ -180,7 +184,9 @@
                 atmObject = [[ATMObject alloc] mapObjectFieldsFromRemoteDictionary:atm];
             }
         }
-        call_completion_block(completionBlock, atmObject, error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            call_completion_block(completionBlock, atmObject, error);
+        });
     }];
     [dataTask resume];
 }

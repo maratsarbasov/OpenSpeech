@@ -18,11 +18,12 @@
 {
     [super mapObjectFieldsFromRemoteDictionary:remoteDictionary];
     _name = [MappingHelper mapString:remoteDictionary[@"name"]];
-    _name = [MappingHelper mapString:remoteDictionary[@"name"]];
     
     if (remoteDictionary[@"coordinate"] != nil) {
-//        NSDictionary *coordinate = remoteDictionary[@"coordinate"];
-//        NSNumber
+        NSDictionary *coordinate = remoteDictionary[@"coordinate"];
+        NSNumber *longitude = [MappingHelper mapFloat:coordinate[@"longitude"]];
+        NSNumber *latitude = [MappingHelper mapFloat:coordinate[@"latitude"]];
+        _location = [[CLLocation alloc] initWithLatitude:latitude.floatValue longitude:longitude.floatValue];
     }
     return self;
 }

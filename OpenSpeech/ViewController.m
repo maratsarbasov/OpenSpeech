@@ -57,17 +57,31 @@
 
 - (void)recognizer:(YSKRecognizer *)recognizer didCompleteWithResults:(YSKRecognition *)results
 {
-    NSLog(@"ad%@",  results.bestResultText);
+    NSLog(@"Запрос: %@",  results.bestResultText);
     AbstractAction *action = [ActionDecider decideForRecognition:results];
+    
+    if (!action)
+    {
+        NSLog(@"Can't recognize command");
+        self.isListening = NO;
+        return;
+    }
+    
     if ([action isKindOfClass:[ExchangeRatesAction class]])
     {
-        ExchangeRatesAction *act = (ExchangeRatesAction *)action;
+        ExchangeRatesAction *exchangeAction = (ExchangeRatesAction *)action;
         CurrencyExchangeViewController *destination = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CurrencyExchangeViewController"];
-        destination.action = act;
+        destination.action = exchangeAction;
         [self presentViewController:destination animated:YES completion:^{
             self.isListening = NO;
         }];
         return;
+    }
+    else if ([action isKindOfClass:[ShowMyCardsAction class]])
+    {
+        ShowMyCardsAction *act = (ShowMyCardsAction *)action;
+        CardListViewController *destination = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CardListViewController"];
+        
     }
     self.isListening = NO;
 }

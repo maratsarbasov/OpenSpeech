@@ -10,6 +10,7 @@
 
 #define EXCHANGE_RATES_RULE_WORDS @[@"перевести", @"долларов", @"доллары", @"евро", @"рубли", @"рублей"]
 #define FIND_NEAREST_ATM_RULE_WORDS @[@"банкомат", @"найти", @"найди", @"ближайший"]
+#define SHOW_MY_CARDS_RULE_WORDS @[@"мои", @"карты", @"карточки", @"покажи", @"список", @"карт"]
 
 @implementation ActionDecider
 
@@ -20,15 +21,23 @@
     
     CGFloat exchangeRatesScore = [self scoreOfActionRule:EXCHANGE_RATES_RULE_WORDS requestWords:words];
     CGFloat findNearestATMScore = [self scoreOfActionRule:FIND_NEAREST_ATM_RULE_WORDS requestWords:words];
+    CGFloat showMyCardsScore = [self scoreOfActionRule:SHOW_MY_CARDS_RULE_WORDS requestWords:words];
     
-    if (exchangeRatesScore > findNearestATMScore)
+    CGFloat max = fmax(exchangeRatesScore, fmax(findNearestATMScore, showMyCardsScore));
+    if (exchangeRatesScore == max)
     {
         return [[ExchangeRatesAction alloc] initWithWords:words];
     }
-    else
+    if (findNearestATMScore == max)
     {
         return [[FindNearestATMAction alloc] init];
     }
+    if (showMyCardsScore == max)
+    {
+        return [[ShowMyCardsAction alloc] init];
+    }
+    
+    return nil;
 }
 
 + (CGFloat)scoreOfActionRule:(NSArray *)ruleWords requestWords:(NSArray *)requestWords

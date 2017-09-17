@@ -36,3 +36,7 @@ typedef NS_ENUM(NSInteger, CurrencyType) {
 @interface FindNearestATMAction : AbstractAction
 
 @end
+
+@interface ShowMyCardsAction : AbstractAction
+
+@end

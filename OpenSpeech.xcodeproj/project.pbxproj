@@ -16,6 +16,7 @@
 		4E993DDF1F6D55AD0077F449 /* ActionDecider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E993DDE1F6D55AD0077F449 /* ActionDecider.m */; };
 		4E993DE21F6D6FE50077F449 /* ActionObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E993DE11F6D6FE50077F449 /* ActionObjects.m */; };
 		4E993DE51F6D85500077F449 /* CurrencyExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E993DE41F6D85500077F449 /* CurrencyExchangeViewController.m */; };
+		4EF444461F6E6790005D59DE /* CardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF444451F6E6790005D59DE /* CardListViewController.m */; };
 		9F961BF01F6D27E2004839E3 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BEF1F6D27E2004839E3 /* NetworkManager.m */; };
 		9F961BF91F6D3AE7004839E3 /* CardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BF81F6D3AE7004839E3 /* CardObject.m */; };
 		9F961BFD1F6D4BA6004839E3 /* AbstractObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F961BFC1F6D4BA6004839E3 /* AbstractObject.m */; };
@@ -41,6 +42,8 @@
 		4E993DE11F6D6FE50077F449 /* ActionObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionObjects.m; sourceTree = "<group>"; };
 		4E993DE31F6D85500077F449 /* CurrencyExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyExchangeViewController.h; sourceTree = "<group>"; };
 		4E993DE41F6D85500077F449 /* CurrencyExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyExchangeViewController.m; sourceTree = "<group>"; };
+		4EF444441F6E6790005D59DE /* CardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardListViewController.h; sourceTree = "<group>"; };
+		4EF444451F6E6790005D59DE /* CardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardListViewController.m; sourceTree = "<group>"; };
 		529F3097757AF04A9F63EF1F /* Pods-OpenSpeech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSpeech.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenSpeech/Pods-OpenSpeech.release.xcconfig"; sourceTree = "<group>"; };
 		9F961BEE1F6D27E2004839E3 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		9F961BEF1F6D27E2004839E3 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 				4E993DDD1F6D55AD0077F449 /* ActionDecider.h */,
 				4E993DDE1F6D55AD0077F449 /* ActionDecider.m */,
 				4E07839D1F6D1F6600813126 /* Main.storyboard */,
+				4EF444441F6E6790005D59DE /* CardListViewController.h */,
+				4EF444451F6E6790005D59DE /* CardListViewController.m */,
 				4E0783A01F6D1F6600813126 /* Assets.xcassets */,
 				4E0783A21F6D1F6600813126 /* LaunchScreen.storyboard */,
 				4E0783A51F6D1F6600813126 /* Info.plist */,
@@ -297,6 +302,7 @@
 				4E0783991F6D1F6600813126 /* AppDelegate.m in Sources */,
 				4E0783961F6D1F6600813126 /* main.m in Sources */,
 				4E993DE51F6D85500077F449 /* CurrencyExchangeViewController.m in Sources */,
+				4EF444461F6E6790005D59DE /* CardListViewController.m in Sources */,
 				4E993DDF1F6D55AD0077F449 /* ActionDecider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -110,6 +110,51 @@
             </objects>
             <point key="canvasLocation" x="784.79999999999995" y="38.23088455772114"/>
         </scene>
+        <!--Card List View Controller-->
+        <scene sceneID="ZR4-x3-2Vi">
+            <objects>
+                <viewController id="yed-AX-WkE" customClass="CardListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gMG-pY-yzY"/>
+                        <viewControllerLayoutGuide type="bottom" id="JtL-ZM-ceN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L86-Oh-ETL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dMj-oi-Rid">
+                                <rect key="frame" x="33" y="28" width="309" height="434"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="434" id="vQH-lb-Jdc"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="yed-AX-WkE" id="Q51-aw-y8O"/>
+                                    <outlet property="delegate" destination="yed-AX-WkE" id="ewp-KZ-qaf"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Xz8-Sb-fvP">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dMj-oi-Rid" firstAttribute="top" secondItem="gMG-pY-yzY" secondAttribute="bottom" constant="8" id="7zv-1R-0Mz"/>
+                            <constraint firstItem="Xz8-Sb-fvP" firstAttribute="centerY" secondItem="L86-Oh-ETL" secondAttribute="centerY" id="EfQ-CE-aFn"/>
+                            <constraint firstItem="Xz8-Sb-fvP" firstAttribute="centerX" secondItem="L86-Oh-ETL" secondAttribute="centerX" id="Xfp-Sg-odP"/>
+                            <constraint firstItem="dMj-oi-Rid" firstAttribute="leading" secondItem="L86-Oh-ETL" secondAttribute="leading" constant="33" id="dcY-ws-GJ1"/>
+                            <constraint firstAttribute="trailing" secondItem="dMj-oi-Rid" secondAttribute="trailing" constant="33" id="ebZ-WX-hpt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Xz8-Sb-fvP" id="HOI-Cu-9e9"/>
+                        <outlet property="cardsTableView" destination="dMj-oi-Rid" id="hNI-fR-pUc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6RV-fO-lbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1591.2" y="41.829085457271368"/>
+        </scene>
     </scenes>
     <resources>
         <image name="open_logo" width="40" height="40"/>

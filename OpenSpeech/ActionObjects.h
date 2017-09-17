@@ -8,16 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
-typedef NS_ENUM(NSInteger, CurrencyType) {
-    CurrencyTypeUSD = 0,
-    CurrencyTypeRUB,
-    CurrencyTypeEUR,
-    CurrencyTypeGBP,
-    CurrencyTypeCHF
-};
-
-
 @interface AbstractAction : NSObject
 
 @end

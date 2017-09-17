@@ -8,9 +8,6 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-// TODO: remove it
-#import "ActionDecider.h"
-
 typedef NS_ENUM(NSInteger, ErrorCode) {
     ErrorCodeNone = 0,
     ErrorCodeFail
@@ -23,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedInstance;
 
 - (void)requestCardsOnCompletion:(nullable ArrayResponseBlock)completionBlock;
+
+- (void)requstBalanceForCard:(CardObject *)cardObject onCompletion:(nullable AnyObjectResponseBlock)completionBlock;
 
 - (void)requestRatesForCurrencyTypeFrom:(CurrencyType)currencyTypeFrom
                       forCurrencyTypeTo:(CurrencyType)currencyTypeTo

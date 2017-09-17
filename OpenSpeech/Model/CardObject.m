@@ -13,6 +13,8 @@
 @synthesize cardType = _cardType;
 @synthesize cardPaymentSystem = _cardPaymentSystem;
 @synthesize name = _name;
+@synthesize value = _value;
+@synthesize currencyType = _currencyType;
 
 - (instancetype)mapObjectFieldsFromRemoteDictionary:(NSDictionary *)remoteDictionary
 {
@@ -23,6 +25,14 @@
     _cardType = [self cardTypeFromRemote:[MappingHelper mapString:remoteDictionary[@"CardType"]]];
     _cardPaymentSystem = [self cardPaymentSystemFromRemote:[MappingHelper mapString:remoteDictionary[@"CardPaymentSystem"]]];
 
+    return self;
+}
+
+- (instancetype)mapBalanceFieldsFromRemoteDictionary:(NSDictionary *)remoteDictionary
+{
+    _value = [MappingHelper mapInt:remoteDictionary[@"Value"]];
+    _currencyType = [self currencyTypeFromRemote:[MappingHelper mapString:remoteDictionary[@"Cur"]]];
+    
     return self;
 }
 
@@ -53,6 +63,28 @@
         return CardPaymentSystemMasterCard;
     }
     return CardPaymentSystemNone;
+}
+
+- (CurrencyType)currencyTypeFromRemote:(NSString *)remote
+{
+    if (remote.length == 0) return CurrencyTypeNone;
+    
+    if ([remote isEqualToString:@"RUB"]) {
+        return CurrencyTypeRUB;
+    }
+    else if ([remote isEqualToString:@"USD"]) {
+        return CurrencyTypeUSD;
+    }
+    else if ([remote isEqualToString:@"EUR"]) {
+        return CurrencyTypeEUR;
+    }
+    else if ([remote isEqualToString:@"GBP"]) {
+        return CurrencyTypeGBP;
+    }
+    else if ([remote isEqualToString:@"CHF"]) {
+        return CurrencyTypeCHF;
+    }
+    return CurrencyTypeNone;
 }
 
 @end

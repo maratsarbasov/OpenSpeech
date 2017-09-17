@@ -92,12 +92,22 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mw3-dc-3YF">
                                 <rect key="frame" x="177" y="323" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiA-ga-8bn">
+                                <rect key="frame" x="160" y="617" width="54" height="30"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="71X-wV-PH0" eventType="touchUpInside" id="Dap-a8-kCf"/>
+                                    <action selector="dismiss:" destination="yed-AX-WkE" eventType="touchUpInside" id="eem-gu-IkR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lXX-xm-hHl" firstAttribute="centerX" secondItem="w0o-PQ-2bH" secondAttribute="centerX" id="3zB-Iy-IIl"/>
                             <constraint firstItem="mw3-dc-3YF" firstAttribute="centerY" secondItem="w0o-PQ-2bH" secondAttribute="centerY" id="98Z-qm-vEf"/>
                             <constraint firstItem="lXX-xm-hHl" firstAttribute="top" secondItem="a0d-39-Tk3" secondAttribute="bottom" constant="140" id="Z3W-z8-aHX"/>
+                            <constraint firstItem="MiA-ga-8bn" firstAttribute="centerX" secondItem="w0o-PQ-2bH" secondAttribute="centerX" id="ezu-qD-3Iv"/>
+                            <constraint firstItem="hea-zc-lwA" firstAttribute="top" secondItem="MiA-ga-8bn" secondAttribute="bottom" constant="20" id="pGW-Z5-wC0"/>
                             <constraint firstItem="mw3-dc-3YF" firstAttribute="centerX" secondItem="w0o-PQ-2bH" secondAttribute="centerX" id="xs8-46-rOm"/>
                         </constraints>
                     </view>
@@ -113,7 +123,7 @@
         <!--Card List View Controller-->
         <scene sceneID="ZR4-x3-2Vi">
             <objects>
-                <viewController id="yed-AX-WkE" customClass="CardListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardListViewController" id="yed-AX-WkE" customClass="CardListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gMG-pY-yzY"/>
                         <viewControllerLayoutGuide type="bottom" id="JtL-ZM-ceN"/>
@@ -123,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dMj-oi-Rid">
-                                <rect key="frame" x="33" y="28" width="309" height="434"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="434"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="434" id="vQH-lb-Jdc"/>
@@ -136,14 +146,23 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Xz8-Sb-fvP">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amD-qZ-RpF">
+                                <rect key="frame" x="160" y="617" width="54" height="30"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="yed-AX-WkE" eventType="touchUpInside" id="IN0-wD-FZt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dMj-oi-Rid" firstAttribute="top" secondItem="gMG-pY-yzY" secondAttribute="bottom" constant="8" id="7zv-1R-0Mz"/>
+                            <constraint firstItem="dMj-oi-Rid" firstAttribute="top" secondItem="gMG-pY-yzY" secondAttribute="bottom" id="7zv-1R-0Mz"/>
                             <constraint firstItem="Xz8-Sb-fvP" firstAttribute="centerY" secondItem="L86-Oh-ETL" secondAttribute="centerY" id="EfQ-CE-aFn"/>
+                            <constraint firstItem="amD-qZ-RpF" firstAttribute="centerX" secondItem="L86-Oh-ETL" secondAttribute="centerX" id="MeF-yH-75D"/>
                             <constraint firstItem="Xz8-Sb-fvP" firstAttribute="centerX" secondItem="L86-Oh-ETL" secondAttribute="centerX" id="Xfp-Sg-odP"/>
-                            <constraint firstItem="dMj-oi-Rid" firstAttribute="leading" secondItem="L86-Oh-ETL" secondAttribute="leading" constant="33" id="dcY-ws-GJ1"/>
-                            <constraint firstAttribute="trailing" secondItem="dMj-oi-Rid" secondAttribute="trailing" constant="33" id="ebZ-WX-hpt"/>
+                            <constraint firstItem="JtL-ZM-ceN" firstAttribute="top" secondItem="amD-qZ-RpF" secondAttribute="bottom" constant="20" id="aHv-yJ-T9d"/>
+                            <constraint firstItem="dMj-oi-Rid" firstAttribute="leading" secondItem="L86-Oh-ETL" secondAttribute="leading" id="dcY-ws-GJ1"/>
+                            <constraint firstAttribute="trailing" secondItem="dMj-oi-Rid" secondAttribute="trailing" id="ebZ-WX-hpt"/>
                         </constraints>
                     </view>
                     <connections>

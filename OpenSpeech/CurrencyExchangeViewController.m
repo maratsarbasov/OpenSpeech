@@ -21,16 +21,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.activityIndicator startAnimating];
+    self.mainLabel.text = @"";
     
     [[NetworkManager sharedInstance] requestRatesForCurrencyTypeFrom:self.action.currencyFrom forCurrencyTypeTo:self.action.currencyTo onCompletion:^(NSNumber * _Nullable number, NSError * _Nullable error) {
         [self.activityIndicator stopAnimating];
-        self.mainLabel.text = [NSString stringWithFormat:@"%f", self.action.amount * number.floatValue];
+        
+        CGFloat result = 0.0;
+        if (self.action.currencyFrom == CurrencyTypeRUB)
+        {
+            result = self.action.amount / number.floatValue;
+        }
+        else if (self.action.currencyTo == CurrencyTypeRUB)
+        {
+            result = self.action.amount * number.floatValue;
+        }
+        else
+        {
+            NSAssert(false, @"not implemented");
+        }
+
+        self.mainLabel.text = [NSString stringWithFormat:@"%f", result];
     }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)dismiss:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 /*

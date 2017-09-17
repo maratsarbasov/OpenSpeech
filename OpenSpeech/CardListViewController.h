@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ActionObjects.h>
+#import "ActionObjects.h"
 
 @interface CardListViewController : UIViewController
-
-@property (strong, nonatomic) ShowMyCardsAction *action;
 
 @end

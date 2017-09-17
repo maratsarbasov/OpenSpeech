@@ -10,6 +10,7 @@
 #import "ActionObjects.h"
 #import "ActionDecider.h"
 #import "CurrencyExchangeViewController.h"
+#import "CardListViewController.h"
 
 #import <YandexSpeechKit/YSKRecognizer.h>
 #import <YandexSpeechKit/YSKRecognition.h>
@@ -41,10 +42,10 @@
 
     // Do any additional setup after loading the view, typically from a nib.
     
-    [[NetworkManager sharedInstance] requestNearATMsForLocation:[[CLLocation alloc] initWithLatitude:37.6167 longitude:55.7500]
-                                                   onCompletion:^(NSNumber * _Nullable number, NSError * _Nullable error) {
+//    [[NetworkManager sharedInstance] requestNearATMsForLocation:[[CLLocation alloc] initWithLatitude:37.6167 longitude:55.7500]
+//                                                   onCompletion:^(NSNumber * _Nullable number, NSError * _Nullable error) {
         
-    }];
+//    }];
 }
 
 - (IBAction)startListening:(id)sender
@@ -86,7 +87,10 @@
     {
         ShowMyCardsAction *act = (ShowMyCardsAction *)action;
         CardListViewController *destination = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CardListViewController"];
-        
+        [self presentViewController:destination animated:YES completion:^{
+            self.isListening = NO;
+        }];
+        return;
     }
     self.isListening = NO;
 }

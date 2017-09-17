@@ -199,6 +199,7 @@
 				TargetAttributes = {
 					4E0783901F6D1F6600813126 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = KXM2Z8Z6A9;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -424,6 +425,7 @@
 			baseConfigurationReference = A9CA4941EA47F2C01ED52F2F /* Pods-OpenSpeech.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KXM2Z8Z6A9;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenSpeech/Supporting Files/OpenSpeech-Prefix.pch";
 				INFOPLIST_FILE = OpenSpeech/Info.plist;
@@ -439,6 +441,7 @@
 			baseConfigurationReference = 529F3097757AF04A9F63EF1F /* Pods-OpenSpeech.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KXM2Z8Z6A9;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenSpeech/Supporting Files/OpenSpeech-Prefix.pch";
 				INFOPLIST_FILE = OpenSpeech/Info.plist;

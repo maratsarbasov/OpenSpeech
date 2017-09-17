@@ -8,7 +8,7 @@
 
 #import "ActionObjects.h"
 
-#define EXCHANGE_RATES_RULE_WORDS @[@"перевести", @"долларов", @"доллары", @"евро", @"рубли", @"рублей"]
+#define EXCHANGE_RATES_RULE_WORDS @[@"перевести", @"долларов", @"доллары", @"евро", @"рубли", @"рублей", @"рублях", @"долларах"]
 #define FIND_NEAREST_ATM_RULE_WORDS @[@"банкомат", @"найти", @"найди", @"ближайший"]
 #define SHOW_MY_CARDS_RULE_WORDS @[@"мои", @"карты", @"карточки", @"покажи", @"список", @"карт"]
 
@@ -24,6 +24,11 @@
     CGFloat showMyCardsScore = [self scoreOfActionRule:SHOW_MY_CARDS_RULE_WORDS requestWords:words];
     
     CGFloat max = fmax(exchangeRatesScore, fmax(findNearestATMScore, showMyCardsScore));
+    if (max == 0.0)
+    {
+        return nil;
+    }
+    
     if (exchangeRatesScore == max)
     {
         return [[ExchangeRatesAction alloc] initWithWords:words];

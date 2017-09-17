@@ -40,7 +40,7 @@
             NSAssert(false, @"not implemented");
         }
 
-        self.mainLabel.text = [NSString stringWithFormat:@"%f", result];
+        self.mainLabel.text = [NSString stringWithFormat:@"%.2f %@ -> %.2f %@", self.action.amount, [CardObject stringForCurrency:self.action.currencyFrom], result, [CardObject stringForCurrency:self.action.currencyTo]];
     }];
 }
 
@@ -51,9 +51,7 @@
 
 - (IBAction)dismiss:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

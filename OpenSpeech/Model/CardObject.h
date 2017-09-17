@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, CurrencyType) {
     CurrencyTypeNone
 };
 
+
 @interface CardObject : AbstractObject
 
 @property (nonatomic, copy, readonly) NSString *name;
@@ -38,6 +39,7 @@ typedef NS_ENUM(NSInteger, CurrencyType) {
 @property (nonatomic, readonly) CardType cardType;
 @property (nonatomic, readonly) CardPaymentSystem cardPaymentSystem;
 
++ (NSString *)stringForCurrency:(CurrencyType)currencyType;
 - (instancetype)mapBalanceFieldsFromRemoteDictionary:(NSDictionary *)remoteDictionary;
 
 @end

@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)requestCardsOnCompletion:(nullable ArrayResponseBlock)completionBlock;
 
-- (void)requstBalanceForCard:(CardObject *)cardObject onCompletion:(nullable AnyObjectResponseBlock)completionBlock;
+- (void)requestBalanceForCard:(CardObject *)cardObject onCompletion:(nullable AnyObjectResponseBlock)completionBlock;
 
 - (void)requestRatesForCurrencyTypeFrom:(CurrencyType)currencyTypeFrom
                       forCurrencyTypeTo:(CurrencyType)currencyTypeTo

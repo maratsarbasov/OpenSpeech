@@ -20,14 +20,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     [self.activityIndicator startAnimating];
+    self.cardsTableView.allowsSelection = NO;
     
     [[NetworkManager sharedInstance] requestCardsOnCompletion:^(NSArray * _Nullable data, NSError * _Nullable error) {
-        [self.activityIndicator stopAnimating];
         self.cards = data;
         self.cardsTableView.hidden = NO;
-        [self.cardsTableView reloadData];
+        
+        for (int i = 0; i < self.cards.count; i++)
+        {
+            CardObject *card = self.cards[i];
+            [[NetworkManager sharedInstance] requestBalanceForCard:card onCompletion:^(id  _Nullable data, NSError * _Nullable error) {
+                if (i == self.cards.count - 1)
+                {
+                    [self.cardsTableView reloadData];
+                    [self.activityIndicator stopAnimating];
+                }
+            }];
+        }
     }];
 }
 
@@ -50,7 +61,7 @@
     
     CardObject *card = self.cards[indexPath.row];
     
-    cell.textLabel.text = card.name;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@ %@", card.name, card.value, [CardObject stringForCurrency:card.currencyType]];
     
     switch (card.cardPaymentSystem) {
         case CardPaymentSystemMir:
@@ -70,8 +81,7 @@
 
 - (IBAction)dismiss:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

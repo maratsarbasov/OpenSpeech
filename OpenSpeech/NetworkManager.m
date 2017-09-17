@@ -131,14 +131,17 @@
 - (void)requestNearATMsForLocation:(CLLocation *)location
                       onCompletion:(NumberResponseBlock)completionBlock
 {
-    NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"/geocoding/1.0.0/getNearATM"
-                                                                    URLString:@"https://api.open.ru/"
-                                                                  parameters:@{ @"getNearATM" : @{ @"coordinates" : @{@"latitude": @(location.coordinate.latitude),
-                                                                                                                      @"longitude": @(location.coordinate.longitude)} }}
-                                                                       error:nil];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/xml"];
+    manager.requestSerializer = [[AFHTTPRequestSerializer alloc] init];
+    [manager.requestSerializer setValue:@"text/xml" forHTTPHeaderField:@"Accept"];
+    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:@"POST"
+                                                                   URLString:@"https://api.open.ru/geocoding/1.0.0/getNearOpenATM"
+                                                                  parameters:nil
+                                                                       error:nil];
+    request.HTTPBody = [@"<?xml version=’1.0’?><getNearATM><coordinates><latitude>55.79073446</latitude><longitude>37.70538694</longitude></coordinates></getNearATM>" dataUsingEncoding:NSUTF8StringEncoding];
+    
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request
                                             completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error)
     {

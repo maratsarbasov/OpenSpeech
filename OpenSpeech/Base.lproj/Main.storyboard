@@ -21,17 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6e4-gT-dqG">
-                                <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="UhY-Nv-vTB"/>
-                                    <constraint firstAttribute="height" constant="80" id="bbg-Lp-pbj"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="open_logo"/>
-                                <connections>
-                                    <action selector="startListening:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G3K-Pt-Z9t"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nIF-eY-jP3">
                                 <rect key="frame" x="177" y="436" width="20" height="20"/>
                             </activityIndicatorView>
@@ -49,6 +38,17 @@
                                     <action selector="finish:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6I0-Ba-s3O"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6e4-gT-dqG">
+                                <rect key="frame" x="147.5" y="293" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="UhY-Nv-vTB"/>
+                                    <constraint firstAttribute="height" constant="80" id="bbg-Lp-pbj"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="open_logo"/>
+                                <connections>
+                                    <action selector="startListening:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G3K-Pt-Z9t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -64,11 +64,51 @@
                         <outlet property="listeningIndicator" destination="nIF-eY-jP3" id="h4M-mU-Wv5"/>
                         <outlet property="listeningLabel" destination="jaZ-aR-IrI" id="2xl-VB-J3n"/>
                         <outlet property="startListenButton" destination="6e4-gT-dqG" id="Bhb-k4-g8l"/>
+                        <segue destination="71X-wV-PH0" kind="show" identifier="GoCurrencyExchangeViewController" id="tio-nm-FBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+        <!--Currency Exchange View Controller-->
+        <scene sceneID="391-0a-d9D">
+            <objects>
+                <viewController storyboardIdentifier="CurrencyExchangeViewController" id="71X-wV-PH0" customClass="CurrencyExchangeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a0d-39-Tk3"/>
+                        <viewControllerLayoutGuide type="bottom" id="hea-zc-lwA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w0o-PQ-2bH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXX-xm-hHl">
+                                <rect key="frame" x="138" y="160" width="98.5" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mw3-dc-3YF">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lXX-xm-hHl" firstAttribute="centerX" secondItem="w0o-PQ-2bH" secondAttribute="centerX" id="3zB-Iy-IIl"/>
+                            <constraint firstItem="mw3-dc-3YF" firstAttribute="centerY" secondItem="w0o-PQ-2bH" secondAttribute="centerY" id="98Z-qm-vEf"/>
+                            <constraint firstItem="lXX-xm-hHl" firstAttribute="top" secondItem="a0d-39-Tk3" secondAttribute="bottom" constant="140" id="Z3W-z8-aHX"/>
+                            <constraint firstItem="mw3-dc-3YF" firstAttribute="centerX" secondItem="w0o-PQ-2bH" secondAttribute="centerX" id="xs8-46-rOm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="mw3-dc-3YF" id="OXe-B2-cDb"/>
+                        <outlet property="mainLabel" destination="lXX-xm-hHl" id="Rod-Nl-kpa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xqR-3g-R8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="784.79999999999995" y="38.23088455772114"/>
         </scene>
     </scenes>
     <resources>

@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "ActionObjects.h"
+#import "ActionDecider.h"
+#import "CurrencyExchangeViewController.h"
 
 #import <YandexSpeechKit/YSKRecognizer.h>
 #import <YandexSpeechKit/YSKRecognition.h>
@@ -59,15 +62,25 @@
 
 - (void)recognizer:(YSKRecognizer *)recognizer didCompleteWithResults:(YSKRecognition *)results
 {
+    NSLog(@"ad%@",  results.bestResultText);
+    AbstractAction *action = [ActionDecider decideForRecognition:results];
+    if ([action isKindOfClass:[ExchangeRatesAction class]])
+    {
+        ExchangeRatesAction *act = (ExchangeRatesAction *)action;
+        CurrencyExchangeViewController *destination = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CurrencyExchangeViewController"];
+        destination.action = act;
+        [self presentViewController:destination animated:YES completion:^{
+            self.isListening = NO;
+        }];
+        return;
+    }
     self.isListening = NO;
-    NSLog(@"%@",  results.bestResultText);
 }
-
 
 - (void)recognizer:(YSKRecognizer *)recognizer didFailWithError:(NSError *)error
 {
     self.isListening = NO;
-    NSLog(@"%@", error);
+    DDLogDebug(@"%@", error);
 }
 
 - (IBAction)finish:(id)sender

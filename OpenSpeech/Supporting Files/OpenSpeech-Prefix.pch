@@ -10,6 +10,7 @@
 
 @import UIKit;
 @import Foundation;
+@import CoreLocation;
 
 #import <CocoaLumberjack/CocoaLumberjack.h>
 extern const DDLogLevel ddLogLevel;

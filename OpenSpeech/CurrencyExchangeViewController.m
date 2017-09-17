@@ -22,9 +22,9 @@
     // Do any additional setup after loading the view.
     [self.activityIndicator startAnimating];
     
-    [[NetworkManager sharedInstance] requestRatesForCurrencyTypeFrom:self.action.currencyFrom forCurrencyTypeTo:self.action.currencyTo onCompletion:^(NSArray * _Nullable data, NSError * _Nullable error) {
+    [[NetworkManager sharedInstance] requestRatesForCurrencyTypeFrom:self.action.currencyFrom forCurrencyTypeTo:self.action.currencyTo onCompletion:^(NSNumber * _Nullable number, NSError * _Nullable error) {
         [self.activityIndicator stopAnimating];
-        self.mainLabel.text = 
+        self.mainLabel.text = [NSString stringWithFormat:@"%f", self.action.amount * number.floatValue];
     }];
 }
 

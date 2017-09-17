@@ -63,6 +63,7 @@
     {
         ExchangeRatesAction *act = (ExchangeRatesAction *)action;
         CurrencyExchangeViewController *destination = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CurrencyExchangeViewController"];
+        destination.action = act;
         [self presentViewController:destination animated:YES completion:^{
             self.isListening = NO;
         }];

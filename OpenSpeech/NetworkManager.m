@@ -152,9 +152,9 @@
 }
 
 - (void)requestNearATMsForLocation:(CLLocation *)location
-                      onCompletion:(NumberResponseBlock)completionBlock
+                      onCompletion:(AnyObjectResponseBlock)completionBlock
 {
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.open.ru/geocoding/1.0.0/getNearATM"]];
+    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[self prepareRequestURL:@"geocoding/1.0.0/getNearATM"]]];
     
     NSString *userUpdate =@"<?xml version=\"1.0\"?><getNearATM><coordinates><latitude>55.79073446</latitude><longitude>37.70538694</longitude></coordinates></getNearATM>";
     
@@ -169,31 +169,21 @@
     [urlRequest setHTTPBody:data1];
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        if(httpResponse.statusCode == 200)
-        {
-            NSError *parseError = nil;
-            
-            
+        ATMObject *atmObject = nil;
+        if (httpResponse.statusCode == 200) {
             NSDictionary *responseDictionary = [[XMLDictionaryParser sharedInstance] dictionaryWithData:data];
-            NSLog(@"The response is - %@",responseDictionary);
-            NSInteger success = [[responseDictionary objectForKey:@"success"] integerValue];
-            if(success == 1)
-            {
-                NSLog(@"Login SUCCESS");
-            }
-            else
-            {
-                NSLog(@"Login FAILURE");
+            NSDictionary *atm = responseDictionary[@"return"][@"poiList"];
+            if (atm != nil) {
+                atmObject = [[ATMObject alloc] mapObjectFieldsFromRemoteDictionary:atm];
             }
         }
-        else
-        {
-            NSLog(@"Error");
-        }
+        call_completion_block(completionBlock, atmObject, error);
     }];
-    [dataTask resume];}
+    [dataTask resume];
+}
 
 #pragma mark - Base
 

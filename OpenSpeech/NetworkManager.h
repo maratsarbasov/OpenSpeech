@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
                            onCompletion:(nullable NumberResponseBlock)completionBlock;
 
 - (void)requestNearATMsForLocation:(CLLocation *)location
-                      onCompletion:(NumberResponseBlock)completionBlock;
+                      onCompletion:(AnyObjectResponseBlock)completionBlock;
 
 @end
 

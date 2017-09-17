@@ -11,10 +11,11 @@
 @import UIKit;
 @import Foundation;
 @import CoreLocation;
-
+@import GoogleMaps;
 
 #import "AbstractObject.h"
 #import "CardObject.h"
+#import "ATMObject.h"
 
 #import <CocoaLumberjack/CocoaLumberjack.h>
 extern const DDLogLevel ddLogLevel;

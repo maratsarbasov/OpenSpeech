@@ -15,6 +15,11 @@
 - (instancetype)initPrivate
 {
     self = [super init];
+    if (self) {
+        self.requestSerializer = [AFJSONRequestSerializer serializer];
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json", @"text/xml"]];
+    }
     return self;
 }
 
@@ -120,6 +125,18 @@
             }
         }
         call_completion_block(completionBlock, value, error);
+    }];
+}
+
+- (void)requestNearATMsForLocation:(CLLocation *)location
+                      onCompletion:(NumberResponseBlock)completionBlock
+{
+    [self POSTRequest:@"geocoding/1.0.0/getNearATM"
+               params:@{ @"coordinates" : @{@"latitude": @(location.coordinate.latitude),
+                                            @"longitude": @(location.coordinate.longitude)}}
+            progress:nil
+        onCompletion:^(id  _Nullable data, NSError * _Nullable error) {
+            
     }];
 }
 

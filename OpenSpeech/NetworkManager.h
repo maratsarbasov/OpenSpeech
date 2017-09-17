@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
                       forCurrencyTypeTo:(CurrencyType)currencyTypeTo
                            onCompletion:(nullable NumberResponseBlock)completionBlock;
 
+- (void)requestNearATMsForLocation:(CLLocation *)location
+                      onCompletion:(NumberResponseBlock)completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

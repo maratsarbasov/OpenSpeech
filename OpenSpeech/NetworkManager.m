@@ -18,7 +18,7 @@
     if (self) {
         self.requestSerializer = [AFJSONRequestSerializer serializer];
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        self.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json", @"text/xml"]];
+        self.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json", @"text/xml"]];        
     }
     return self;
 }
@@ -131,13 +131,29 @@
 - (void)requestNearATMsForLocation:(CLLocation *)location
                       onCompletion:(NumberResponseBlock)completionBlock
 {
-    [self POSTRequest:@"geocoding/1.0.0/getNearATM"
-               params:@{ @"coordinates" : @{@"latitude": @(location.coordinate.latitude),
-                                            @"longitude": @(location.coordinate.longitude)}}
-            progress:nil
-        onCompletion:^(id  _Nullable data, NSError * _Nullable error) {
-            
+    NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"/geocoding/1.0.0/getNearATM"
+                                                                    URLString:@"https://api.open.ru/"
+                                                                  parameters:@{ @"getNearATM" : @{ @"coordinates" : @{@"latitude": @(location.coordinate.latitude),
+                                                                                                                      @"longitude": @(location.coordinate.longitude)} }}
+                                                                       error:nil];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/xml"];
+    NSURLSessionDataTask *task = [manager dataTaskWithRequest:request
+                                            completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error)
+    {
+        NSString *fetchedXML = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"Response string: %@",fetchedXML);
     }];
+    [task resume];
+//
+//    [self POSTRequest:@"geocoding/1.0.0/getNearATM"
+//               params:@{ @"coordinates" : @{@"latitude": @(location.coordinate.latitude),
+//                                            @"longitude": @(location.coordinate.longitude)}}
+//            progress:nil
+//        onCompletion:^(id  _Nullable data, NSError * _Nullable error) {
+//            
+//    }];
 }
 
 #pragma mark - Base
